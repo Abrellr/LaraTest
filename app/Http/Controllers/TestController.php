@@ -10,4 +10,8 @@ class TestController extends Controller
     {
         return '12345';
     }
+    public function cobacoba()
+    {
+        return 'coba-coba';
+    }
 }
