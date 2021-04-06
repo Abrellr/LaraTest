@@ -12,6 +12,9 @@ class TestController extends Controller
     }
     public function cobacoba()
     {
-        return 'coba-coba';
+        return [
+            "name" => "ricky",
+            "age" => 10
+        ];
     }
 }

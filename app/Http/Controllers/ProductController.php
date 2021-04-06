@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Model\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -10,16 +11,7 @@ class ProductController extends Controller
     //get all products
     public function get()
     {
-        $products = [
-            [
-                "name" => "clothes",
-                "price" => 50
-            ],
-            [
-                "name" => "pants",
-                "price" => "100"
-            ]
-        ];
+        $products = Product::all();
         return $products;
     }
 
@@ -35,6 +27,12 @@ class ProductController extends Controller
         if ($request->price > 200) {
             return "price is too high";
         }
+
+        $product = new Product();
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->stock = $request->stock;
+        $product->save();
         return "created $request->name";
     }
 }
